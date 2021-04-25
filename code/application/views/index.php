@@ -11,31 +11,50 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
     <script>
         $(document).ready(function(){
-            
             $.get('/Posts/index_html', function(res) {
             $('#posts').html(res);
             });
-
             $('#add_form').submit(function(){
                 $.post($(this).attr('action'), $(this).serialize(), function(res) {
                     $('#posts').html(res);
                 });
             return false;
             });
-
             $(document).on("submit","#delete", function(evt) {
                 evt.preventDefault();
                 $.post($(this).attr('action'), $(this).serialize(), function(res) {
                     $('#posts').html(res);
                 });
-               
                 return false;
             });
-            
-            
+            $(document).on("click","#update_form", function(evt) {
+                evt.preventDefault();
+                console.log( $( this ).serialize() );
+                $.post($(this).attr('action'), $(this).serialize(), function(res) {
+                    $('#posts').html(res);
+                });
+                return false;
+            });
+            $(document).on("click","#update_title", function(evt) {
+                evt.preventDefault();
+                console.log( $( this ).serialize() );
+                $.post($(this).attr('action'), $(this).serialize(), function(res) {
+                    $('#posts').html(res);
+                });
+                return false;
+            });
         });
-        
     </script>
+    <style>
+        #update_title{
+            border: none;
+        }
+        #update_desc{
+            border:none;
+            resize: none;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
 <!-- Main CONTAINER -->
@@ -67,5 +86,6 @@
         <!-- end content container -->
     </div>
 <!-- END Main CONTAINER -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 </body>
 </html>

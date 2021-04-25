@@ -35,6 +35,11 @@ class Posts extends CI_Controller {
 		$data["posts"] = $this->Post->all();
 		$this->load->view("partials/posts", $data);
 	}
+	public function update() {
+		$this->Post->update($this->input->post());
+		$data["posts"] = $this->Post->all();
+		$this->load->view("partials/posts", $data);
+	}
 	public function index()
 	{
 		$this->load->view('index');
