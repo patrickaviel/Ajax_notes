@@ -27,7 +27,7 @@
                 });
                 return false;
             });
-            $(document).on("click","#update_form", function(evt) {
+            $(document).on("submit","#update_form", function(evt) {
                 evt.preventDefault();
                 console.log( $( this ).serialize() );
                 $.post($(this).attr('action'), $(this).serialize(), function(res) {
@@ -35,14 +35,14 @@
                 });
                 return false;
             });
-            $(document).on("click","#update_title", function(evt) {
-                evt.preventDefault();
-                console.log( $( this ).serialize() );
-                $.post($(this).attr('action'), $(this).serialize(), function(res) {
-                    $('#posts').html(res);
-                });
-                return false;
-            });
+            // $(document).on("click","#update_title", function(evt) {
+            //     evt.preventDefault();
+            //     console.log( $( this ).serialize() );
+            //     $.post($(this).attr('action'), $(this).serialize(), function(res) {
+            //         $('#posts').html(res);
+            //     });
+            //     return false;
+            // });
         });
     </script>
     <style>
